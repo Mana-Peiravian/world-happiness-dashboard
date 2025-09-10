@@ -1,5 +1,5 @@
 // Include PapaParse for CSV file parsing
-import { parse } from 'papaparse'; 
+const Papa = require('papaparse'); 
 
 // Set up the CSV data URLs (replace with the actual CSV file URLs when deployed)
 const files = [
@@ -15,7 +15,7 @@ let data = [];
 
 // Fetch and parse CSV files
 files.forEach(file => {
-  parse(file, {
+  Papa.parse(file, {
     download: true,
     header: true,
     dynamicTyping: true,
