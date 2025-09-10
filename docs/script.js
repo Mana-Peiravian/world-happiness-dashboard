@@ -52,7 +52,7 @@ function renderDashboard() {
   });
 
   // Scatter plot: GDP per Capita vs Happiness (using 2019 data)
-  const gdp2019 = data[4].map(row => row['GDP per capita']);
+  const gdp2019 = data[4].map(row => row['Economy (GDP per Capita)']);
   const happiness2019 = data[4].map(row => row['Happiness Score']);
   const scatterPlotData = {
     x: gdp2019,
@@ -61,8 +61,8 @@ function renderDashboard() {
     type: 'scatter'
   };
   Plotly.newPlot('scatterPlot', [scatterPlotData], {
-    title: 'GDP per Capita vs Happiness Score (2019)',
-    xaxis: { title: 'GDP per Capita' },
+    title: 'Economy (GDP per Capita) vs Happiness Score (2019)',
+    xaxis: { title: 'Economy (GDP per Capita)' },
     yaxis: { title: 'Happiness Score' }
   });
 
@@ -72,13 +72,13 @@ function renderDashboard() {
     .slice(0, 5); // Top 5 happiest countries
 
   const barChartData = {
-    x: topCountries.map(row => row.Country),
+    x: topCountries.map(row => row['Country or region']),
     y: topCountries.map(row => row['Happiness Score']),
     type: 'bar'
   };
   Plotly.newPlot('barChart', [barChartData], {
     title: 'Top 5 Happiest Countries (2019)',
-    xaxis: { title: 'Country' },
+    xaxis: { title: 'Country or region' },
     yaxis: { title: 'Happiness Score' }
   });
 }
