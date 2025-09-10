@@ -68,10 +68,10 @@ function updatePlots(year, country) {
 function plotChoropleth(data) {
     const trace = {
         type: 'choropleth',
-        locations: data.map(d => d.Country),
+        locations: data.map(d => d['Country or region']),
         locationmode: 'country names',
         z: data.map(d => parseFloat(d['Happiness Score'])),
-        text: data.map(d => `${d.Country}<br>Score: ${d['Happiness Score']}`),
+        text: data.map(d => `${d['Country or region']}<br>Score: ${d['Happiness Score']}`),
         colorscale: 'Viridis',
         autocolorscale: false,
         reversescale: false,
