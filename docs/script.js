@@ -16,18 +16,20 @@ let data = [];
 // Fetch and parse CSV files using PapaParse (from the CDN)
 files.forEach(file => {
   Papa.parse(file, {
-    download: true,  // Download the CSV file
-    header: true,    // Treat the first row as headers
-    dynamicTyping: true,  // Automatically convert numbers
+    download: true,
+    header: true,
+    dynamicTyping: true,
     complete: function(results) {
+      console.log(`Parsed ${file}:`, results.data); // Log the parsed data
       data.push(results.data);
-      // Once all files are parsed, call the function to render the dashboard
+
       if (data.length === files.length) {
         renderDashboard();
       }
     }
   });
 });
+
 
 // Function to render the charts after data is loaded
 function renderDashboard() {
