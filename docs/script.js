@@ -1,10 +1,10 @@
 // Load CSV files and initialize dashboard
 const csvFiles = [
-    'data/data2015.csv',
-    'data/data2016.csv',
-    'data/data2017.csv',
-    'data/data2018.csv',
-    'data/data2019.csv'
+    'data/2015.csv',
+    'data/2016.csv',
+    'data/2017.csv',
+    'data/2018.csv',
+    'data/2019.csv'
 ];
 let allData = [];
 let selectedYear = 2019;
