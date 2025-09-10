@@ -3,11 +3,11 @@ const Papa = window.Papa;
 
 // Set up the CSV data URLs (replace with actual URLs when deploying)
 const files = [
-  "/world-happiness-dashboard/data/2015.csv",
-  "/world-happiness-dashboard/data/2016.csv",
-  "/world-happiness-dashboard/data/2017.csv",
-  "/world-happiness-dashboard/data/2018.csv",
-  "/world-happiness-dashboard/data/2019.csv"
+  "data/2015.csv",
+  "data/2016.csv",
+  "data/2017.csv",
+  "data/2018.csv",
+  "data/2019.csv"
 ];
 
 // Placeholder data to use when CSV is loaded
