@@ -1,41 +1,44 @@
-/* Global styles */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  padding: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-header {
-  background-color: #2563eb;
-  color: white;
-  text-align: center;
-  padding: 2rem 0;
+body.dark-mode {
+    background-color: #222;
+    color: #fff;
 }
 
-h1 {
-  font-size: 2.5rem;
+body.dark-mode .card {
+    background-color: #333;
+    color: #fff;
 }
 
-#charts {
-  display: flex;
-  justify-content: space-around;
-  padding: 2rem;
+body.dark-mode .bg-light {
+    background-color: #444 !important;
 }
 
-#charts > div {
-  width: 30%;
-  height: 400px;
+body.dark-mode .bg-primary {
+    background-color: #1a73e8 !important;
 }
 
+.sidebar {
+    min-height: 100vh;
+    border-right: 1px solid #ddd;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#choroplethMap, #barChart, #scatterPlot, #lineChart {
+    height: 400px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  #charts {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #charts > div {
-    width: 80%;
-    margin-bottom: 20px;
-  }
+    .sidebar {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
 }
