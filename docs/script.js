@@ -1,26 +1,27 @@
-// Include PapaParse for CSV file parsing
-const Papa = require('papaparse'); 
+// Include PapaParse for CSV file parsing (loaded via CDN)
+const Papa = window.Papa;
 
-// Set up the CSV data URLs (replace with the actual CSV file URLs when deployed)
+// Set up the CSV data URLs (replace with actual URLs when deploying)
 const files = [
-  "../data/2015.csv",
-  "../data/2016.csv",
-  "../data/2017.csv",
-  "../data/2018.csv",
-  "../data/2019.csv"
+  "data/2015.csv",
+  "data/2016.csv",
+  "data/2017.csv",
+  "data/2018.csv",
+  "data/2019.csv"
 ];
 
 // Placeholder data to use when CSV is loaded
 let data = [];
 
-// Fetch and parse CSV files
+// Fetch and parse CSV files using PapaParse (from the CDN)
 files.forEach(file => {
   Papa.parse(file, {
-    download: true,
-    header: true,
-    dynamicTyping: true,
+    download: true,  // Download the CSV file
+    header: true,    // Treat the first row as headers
+    dynamicTyping: true,  // Automatically convert numbers
     complete: function(results) {
       data.push(results.data);
+      // Once all files are parsed, call the function to render the dashboard
       if (data.length === files.length) {
         renderDashboard();
       }
@@ -28,9 +29,9 @@ files.forEach(file => {
   });
 });
 
-// Render charts after data is loaded
+// Function to render the charts after data is loaded
 function renderDashboard() {
-  // Example of data for global happiness trend over the years
+  // Data for global happiness trend over the years (using the 2015 dataset as an example)
   const years = data[0].map(row => row.Year);
   const happinessScores = data[0].map(row => row['Happiness Score']);
 
@@ -48,12 +49,12 @@ function renderDashboard() {
     yaxis: { title: 'Happiness Score' }
   });
 
-  // Scatter plot: GDP vs Happiness (using 2019 data)
-  const gdp = data[4].map(row => row['GDP per capita']);
-  const happiness = data[4].map(row => row['Happiness Score']);
+  // Scatter plot: GDP per Capita vs Happiness (using 2019 data)
+  const gdp2019 = data[4].map(row => row['GDP per capita']);
+  const happiness2019 = data[4].map(row => row['Happiness Score']);
   const scatterPlotData = {
-    x: gdp,
-    y: happiness,
+    x: gdp2019,
+    y: happiness2019,
     mode: 'markers',
     type: 'scatter'
   };
@@ -64,7 +65,10 @@ function renderDashboard() {
   });
 
   // Bar chart: Top 5 happiest countries (2019 data)
-  const topCountries = data[4].sort((a, b) => b['Happiness Score'] - a['Happiness Score']).slice(0, 5);
+  const topCountries = data[4]
+    .sort((a, b) => b['Happiness Score'] - a['Happiness Score'])
+    .slice(0, 5); // Top 5 happiest countries
+
   const barChartData = {
     x: topCountries.map(row => row.Country),
     y: topCountries.map(row => row['Happiness Score']),
