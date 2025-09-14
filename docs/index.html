@@ -33,10 +33,17 @@
                     <input type="range" class="form-range" id="yearSlider" min="2015" max="2019" value="2019">
                     <span id="yearValue">2019</span>
                 </div>
-                <!-- Country Search -->
+                Country Search
                 <div class="mb-3">
                     <label for="countrySearch" class="form-label">Search Country</label>
                     <input type="text" class="form-control" id="countrySearch" placeholder="Enter country name">
+                </div>
+                <!-- Country Dropdown for Line Chart -->
+                <div class="mb-3">
+                    <label for="countrySelect" class="form-label">Select Countries (up to 5)</label>
+                    <select class="form-select" id="countrySelect" multiple size="5">
+                        <!-- Options populated dynamically -->
+                    </select>
                 </div>
                 <!-- Dark Mode Toggle -->
                 <div class="form-check form-switch mb-3">
