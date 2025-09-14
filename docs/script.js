@@ -82,7 +82,7 @@ function updatePlots(year, country, countries) {
     plotMultiLineChart(countries);
 }
 
-// Choropleth Map (unchanged)
+// Choropleth Map 
 function plotChoropleth(data) {
     const trace = {
         type: 'choropleth',
@@ -173,6 +173,10 @@ function plotBubbleChart(data) {
         title: { text: `Happiness vs. GDP in ${selectedYear}`, x: 0.5 },
         xaxis: { title: 'GDP per Capita' },
         yaxis: { title: 'Happiness Score' },
+        legend: {
+            orientation: "h",
+            y: -0.2   // 👈 pushes legend below chart
+        },
         height: 400,
         hovermode: 'closest'
     };
