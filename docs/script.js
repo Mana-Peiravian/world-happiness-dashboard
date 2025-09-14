@@ -173,10 +173,7 @@ function plotBubbleChart(data) {
         title: { text: `Happiness vs. GDP in ${selectedYear}`, x: 0.5 },
         xaxis: { title: 'GDP per Capita' },
         yaxis: { title: 'Happiness Score' },
-        legend: {
-            orientation: "h",
-            y: -0.2   // 👈 pushes legend below chart
-        },
+        showlegend: false,
         height: 400,
         hovermode: 'closest'
     };
